@@ -40,13 +40,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.AddButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // AudioListSearch
             // 
             this.AudioListSearch.FormattingEnabled = true;
-            this.AudioListSearch.Location = new System.Drawing.Point(210, 34);
+            this.AudioListSearch.Location = new System.Drawing.Point(187, 34);
             this.AudioListSearch.Name = "AudioListSearch";
+            this.AudioListSearch.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.AudioListSearch.Size = new System.Drawing.Size(205, 264);
             this.AudioListSearch.TabIndex = 0;
             // 
@@ -55,6 +57,7 @@
             this.AudioListPlay.FormattingEnabled = true;
             this.AudioListPlay.Location = new System.Drawing.Point(435, 32);
             this.AudioListPlay.Name = "AudioListPlay";
+            this.AudioListPlay.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.AudioListPlay.Size = new System.Drawing.Size(173, 264);
             this.AudioListPlay.TabIndex = 1;
             // 
@@ -130,7 +133,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(207, 18);
+            this.label3.Location = new System.Drawing.Point(184, 18);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 13);
             this.label3.TabIndex = 11;
@@ -145,11 +148,22 @@
             this.label4.TabIndex = 12;
             this.label4.Text = "Playlist";
             // 
+            // AddButton
+            // 
+            this.AddButton.Location = new System.Drawing.Point(399, 141);
+            this.AddButton.Name = "AddButton";
+            this.AddButton.Size = new System.Drawing.Size(30, 25);
+            this.AddButton.TabIndex = 13;
+            this.AddButton.Text = ">>";
+            this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(625, 335);
+            this.Controls.Add(this.AddButton);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -183,6 +197,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button AddButton;
     }
 }
 

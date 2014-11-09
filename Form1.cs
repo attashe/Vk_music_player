@@ -25,8 +25,18 @@ namespace Vk_Music_Player
             //AudioListSearch.Items.AddRange();
             foreach (var audio in AudioList)
             {
-                AudioListSearch.Items.Add(audio);
+                AudioListSearch.Items.Add(audio.Title);
             }
+        }
+
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            var playList = AudioListSearch.SelectedIndices;
+            if(playList.Count != 0)
+                foreach (int i in playList)
+                {
+                    AudioListPlay.Items.Add(AudioListSearch.Items[i]);
+                }
         }
     }
 }

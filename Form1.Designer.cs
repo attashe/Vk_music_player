@@ -51,6 +51,7 @@
             this.AudioListSearch.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.AudioListSearch.Size = new System.Drawing.Size(205, 264);
             this.AudioListSearch.TabIndex = 0;
+            this.AudioListSearch.DoubleClick += new System.EventHandler(this.AudioListSearch_DoubleClick);
             // 
             // AudioListPlay
             // 
@@ -176,6 +177,9 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.AudioListPlay);
             this.Controls.Add(this.AudioListSearch);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);

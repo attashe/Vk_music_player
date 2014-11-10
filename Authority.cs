@@ -12,11 +12,6 @@ using VkNet.Enums.Filters;
 
 namespace Vk_Music_Player
 {
-    public static class Vk
-    {
-        public static VkApi vk = new VkApi();
-    }
-
         public partial class Authority : Form
         {
             public Authority()
@@ -34,7 +29,7 @@ namespace Vk_Music_Player
                     Form mainForm = new Form1();
                     try
                     {
-                        ActiveForm.Visible = false;
+                        ActiveForm.Visible = false;// TO DO: исправить ошибку когда ни одна из форм приложения не является активный(пользователь за время авторизации убрфл фокус с приложения)
                         mainForm.ShowDialog(ActiveForm);
                     }
                     finally
@@ -66,5 +61,10 @@ namespace Vk_Music_Player
                 }
                 return true; // TO DO: проверка успешности аутентификации
             }
+        }
+
+        public static class Vk
+        {
+            public static VkApi vk = new VkApi();
         }
 }

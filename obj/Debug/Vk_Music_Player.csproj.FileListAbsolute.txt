@@ -16,4 +16,4 @@ C:\Users\Администратор\documents\visual studio 2012\Projects\Vk_Mus
 C:\Users\Администратор\documents\visual studio 2012\Projects\Vk_Music_Player\Vk_Music_Player\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Администратор\documents\visual studio 2012\Projects\Vk_Music_Player\Vk_Music_Player\bin\Debug\VkNet.pdb
 C:\Users\Администратор\documents\visual studio 2012\Projects\Vk_Music_Player\Vk_Music_Player\bin\Debug\VkNet.xml
-C:\Users\Администратор\documents\visual studio 2012\Projects\Vk_Music_Player\Vk_Music_Player\obj\Debug\Vk_Music_Player.Vk.resources
+C:\Users\Администратор\documents\visual studio 2012\Projects\Vk_Music_Player\Vk_Music_Player\obj\Debug\Vk_Music_Player.Authority.resources

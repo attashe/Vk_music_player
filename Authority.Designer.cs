@@ -59,6 +59,7 @@
             this.Login.Name = "Login";
             this.Login.Size = new System.Drawing.Size(119, 20);
             this.Login.TabIndex = 2;
+            this.Login.Text = "mihailov_@bk.ru";
             // 
             // Password
             // 
@@ -66,6 +67,7 @@
             this.Password.Name = "Password";
             this.Password.Size = new System.Drawing.Size(118, 20);
             this.Password.TabIndex = 3;
+            this.Password.Text = "q1w2e3r4t5y6";
             this.Password.UseSystemPasswordChar = true;
             // 
             // StartAuth
@@ -82,7 +84,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(336, 153);
+            this.ClientSize = new System.Drawing.Size(233, 162);
             this.Controls.Add(this.StartAuth);
             this.Controls.Add(this.Password);
             this.Controls.Add(this.Login);

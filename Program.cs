@@ -11,12 +11,17 @@ namespace Vk_Music_Player
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
+        //TO DO: Добавить глобальный обработчик ошибок и мьютекс, не позволяющий запускать два экзэмпляра приложения одновременно
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Authority());
+            authForm = new Authority();
+            mainForm = new Form1();
+            Application.Run(authForm);
         }
+        static public Form authForm;
+        static public Form mainForm;
     }
 }

@@ -22,15 +22,13 @@ namespace Vk_Music_Player
             private void button1_Click(object sender, EventArgs e)
             {
                 //TO DO: окно ожидания авторизации
+                //TO DO: переработать вызов функции авторизации для обеспечения асинхронного вызова
                 if (Auth(Login.Text, Password.Text)) //TO DO: шифрование пользовательских данных
                 {
-                    //Application.Run(new Form1());
-                    //ActiveForm.Close();
-                    Form mainForm = new Form1();
                     try
                     {
-                        ActiveForm.Visible = false;// TO DO: исправить ошибку когда ни одна из форм приложения не является активный(пользователь за время авторизации убрфл фокус с приложения)
-                        mainForm.ShowDialog(ActiveForm);
+                        Program.authForm.Visible = false;// TO DO: исправить ошибку когда ни одна из форм приложения не является активный(пользователь за время авторизации убрфл фокус с приложения)
+                        Program.mainForm.ShowDialog(ActiveForm);
                     }
                     finally
                     {
@@ -57,6 +55,11 @@ namespace Vk_Music_Player
                     //TO DO: Вынести строковую константу из кода, для локализируемости
                     MessageBox.Show(e.Email +
                                     "\nВозможно данный логин не существует, либо пароль набран не верно.\nПовторите ввод.");
+                    return false;
+                }
+                catch (VkNet.Exception.VkApiException e)
+                {
+                    MessageBox.Show("Не удалось соединиться с сервером, проверьте интернет-соединение");
                     return false;
                 }
                 return true; // TO DO: проверка успешности аутентификации

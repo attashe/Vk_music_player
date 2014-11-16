@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace Vk_Music_Player
 {
@@ -19,9 +20,14 @@ namespace Vk_Music_Player
             Application.SetCompatibleTextRenderingDefault(false);
             authForm = new Authority();
             mainForm = new Form1();
+            Application.ThreadException += UnknownException;//как бы глобальный перехватчик каких-то необработанных исключений
             Application.Run(authForm);
         }
         static public Form authForm;
         static public Form mainForm;
+        static void UnknownException(object sender, ThreadExceptionEventArgs e)
+        {
+            MessageBox.Show(e.ToString());
+        }
     }
 }

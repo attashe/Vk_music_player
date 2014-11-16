@@ -28,8 +28,8 @@ namespace Vk_Music_Player
                 {
                     try
                     {
-                        Program.authForm.Visible = false;// TO DO: исправить ошибку когда ни одна из форм приложения не является активный(пользователь за время авторизации убрфл фокус с приложения)
-                        Program.mainForm.ShowDialog(ActiveForm);
+                        Program.authForm.Visible = false;// +TO DO: исправить ошибку когда ни одна из форм приложения не является активный(пользователь за время авторизации убрфл фокус с приложения)
+                        Program.mainForm.ShowDialog(Program.authForm);
                     }
                     finally
                     {

@@ -22,6 +22,7 @@ namespace Vk_Music_Player
         public Form1()
         {
             InitializeComponent();
+            myPlayer = new AsyncPlayer(textBox2.Text);
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -32,7 +33,7 @@ namespace Vk_Music_Player
                 foreach (int i in playList)
                 {
                     AudioListPlay.Items.Add(AudioListSearch.Items[i]);
-                    AsyncPlayer.EnqueueTask(AudioList[i]);
+                    myPlayer.EnqueueTask(AudioList[i]);
                 }
 
             }
@@ -49,12 +50,11 @@ namespace Vk_Music_Player
             FolderBrowserDialog browseFolder = new FolderBrowserDialog();
             browseFolder.ShowDialog(Program.mainForm);
             textBox2.Text = browseFolder.SelectedPath;
-            AsyncPlayer.FilePath = textBox2.Text;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            myPlayer = new AsyncPlayer();
+            myPlayer.Play(sender, e);
         }
 
         private void AudioListPlay_SelectedIndexChanged(object sender, EventArgs e)
@@ -92,6 +92,11 @@ namespace Vk_Music_Player
             {
                 AudioListSearch.Items.Add(audio.Title);
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            myPlayer.Pause();
         }
     }
 }

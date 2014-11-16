@@ -119,6 +119,7 @@
             this.button3.TabIndex = 7;
             this.button3.Text = "Pause";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -201,7 +202,6 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(415, 20);
             this.textBox2.TabIndex = 16;
-            this.textBox2.Text = "C:\\Users\\Andrey\\Music\\tmpItems";
             // 
             // trackBar1
             // 
@@ -302,7 +302,7 @@
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
+        public System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.ListBox tabs;
         private System.Windows.Forms.Label label6;

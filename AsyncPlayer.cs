@@ -19,7 +19,7 @@ namespace Vk_Music_Player
 
         public static Queue<VkNet.Model.Attachments.Audio> queue = new Queue<VkNet.Model.Attachments.Audio>();
         public VkNet.Model.Attachments.Audio currAudio;
-        static String FilePath = "C:\\Users\\Andrey\\Music\\tmpItems";// TO DO: добавить публичное свойство с проверкой корректности, свободного места и т.д.
+        public static String FilePath = "C:\\Users\\Andrey\\Music\\tmpItems";// TO DO: добавить публичное свойство с проверкой корректности, свободного места и т.д.
         IWavePlayer waveOutDevice = new WaveOut(); 
         public int playDuration=0;// TO DO: сохранение приостановленной позиции
         static object locker = new object();
@@ -28,7 +28,6 @@ namespace Vk_Music_Player
         public AsyncPlayer()
         {
             worker = new Thread(this.Play);
-            //worker.IsBackground = true;
             worker.Start();
         }
 
@@ -67,29 +66,26 @@ namespace Vk_Music_Player
         
         public void Play()
         {
-            while (true)
+            lock (locker)
             {
-                lock (locker)
+                if (queue.Count > 0)
                 {
-                    if (queue.Count > 0)
+                    if (waveOutDevice.PlaybackState != PlaybackState.Playing)
                     {
-                        if (waveOutDevice.PlaybackState != PlaybackState.Paused)
-                        {
-                            readAudio();
-                        }
+                        readAudio();
                         waveOutDevice.Play();
                         Thread.Sleep(currAudio.Duration * 1000);
                     }
-                    else
-                        wh.WaitOne();
                 }
+                else
+                    wh.WaitOne();
             }
         }
         public void Stop()
         {
             if (waveOutDevice.PlaybackState != PlaybackState.Stopped)
             {
-                waveOutDevice.Pause();
+                waveOutDevice.Stop();
                 //worker.Abort();
             }
         }

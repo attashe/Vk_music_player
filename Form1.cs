@@ -49,6 +49,7 @@ namespace Vk_Music_Player
             FolderBrowserDialog browseFolder = new FolderBrowserDialog();
             browseFolder.ShowDialog(Program.mainForm);
             textBox2.Text = browseFolder.SelectedPath;
+            AsyncPlayer.FilePath = textBox2.Text;
         }
 
         private void button2_Click(object sender, EventArgs e)

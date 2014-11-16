@@ -72,7 +72,7 @@
             // 
             // StartAuth
             // 
-            this.StartAuth.Location = new System.Drawing.Point(18, 108);
+            this.StartAuth.Location = new System.Drawing.Point(41, 99);
             this.StartAuth.Name = "StartAuth";
             this.StartAuth.Size = new System.Drawing.Size(120, 33);
             this.StartAuth.TabIndex = 4;
@@ -84,18 +84,20 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(233, 162);
+            this.ClientSize = new System.Drawing.Size(215, 146);
             this.Controls.Add(this.StartAuth);
             this.Controls.Add(this.Password);
             this.Controls.Add(this.Login);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Authority";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Authority";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Authority_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 

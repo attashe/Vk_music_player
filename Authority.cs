@@ -22,6 +22,11 @@ namespace Vk_Music_Player
 
             private void button1_Click(object sender, EventArgs e)
             {
+                Authorizing();
+            }
+
+            private void Authorizing()
+            {
                 //TO DO: окно ожидания авторизации
                 //TO DO: переработать вызов функции авторизации для обеспечения асинхронного вызова
                 if (Auth(Login.Text, Password.Text)) //TO DO: шифрование пользовательских данных
@@ -64,6 +69,20 @@ namespace Vk_Music_Player
                     return false;
                 }
                 return true; // TO DO: проверка успешности аутентификации
+            }
+
+            private void Authority_KeyPress(object sender, KeyPressEventArgs e)
+            {
+                if (e.KeyChar == 13)
+                {
+                    e.Handled = true;
+                    Authorizing();
+                }
+                else if (e.KeyChar == 27)
+                {
+                    e.Handled = true;
+                    Application.Exit();
+                }
             }
         }
 

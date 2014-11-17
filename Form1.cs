@@ -22,6 +22,7 @@ namespace Vk_Music_Player
         public Form1()
         {
             InitializeComponent();
+            myPlayer = new AsyncPlayer(textBox2.Text);
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -32,7 +33,7 @@ namespace Vk_Music_Player
                 foreach (int i in playList)
                 {
                     AudioListPlay.Items.Add(AudioListSearch.Items[i]);
-                    AsyncPlayer.EnqueueTask(AudioList[i]);
+                    new Thread(myPlayer.EnqueueTask).Start(AudioList[i]);
                 }
 
             }
@@ -49,17 +50,25 @@ namespace Vk_Music_Player
             FolderBrowserDialog browseFolder = new FolderBrowserDialog();
             browseFolder.ShowDialog(Program.mainForm);
             textBox2.Text = browseFolder.SelectedPath;
-            AsyncPlayer.FilePath = textBox2.Text;
+            myPlayer.FilePath = textBox2.Text;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            myPlayer = new AsyncPlayer();
+            if (myPlayer.waveOutDevice.PlaybackState == NAudio.Wave.PlaybackState.Stopped)
+            {
+                myPlayer.Play(sender, e);
+                button2.Text = "Pl/Pa";
+            }
+            else
+            {
+                myPlayer.Pause();
+            }
         }
 
         private void AudioListPlay_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -92,6 +101,32 @@ namespace Vk_Music_Player
             {
                 AudioListSearch.Items.Add(audio.Title);
             }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = false;
+            Application.Exit(e);
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            myPlayer.getVolume(trackBar1.Value);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

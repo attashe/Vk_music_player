@@ -13,81 +13,81 @@ using System.Net;
 
 namespace Vk_Music_Player
 {
-        public partial class Authority : Form
+    public partial class Authority : Form
+    {
+        public Authority()
         {
-            public Authority()
-            {
-                InitializeComponent();
-            }
+            InitializeComponent();
+        }
 
-            private void button1_Click(object sender, EventArgs e)
-            {
-                Authorizing();
-            }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Authorizing();
+        }
 
-            private void Authorizing()
+        private void Authorizing()
+        {
+            //TO DO: окно ожидания авторизации
+            //TO DO: переработать вызов функции авторизации для обеспечения асинхронного вызова
+            if (Auth(Login.Text, Password.Text)) //TO DO: шифрование пользовательских данных
             {
-                //TO DO: окно ожидания авторизации
-                //TO DO: переработать вызов функции авторизации для обеспечения асинхронного вызова
-                if (Auth(Login.Text, Password.Text)) //TO DO: шифрование пользовательских данных
-                {
-                    try
-                    {
-                        Program.authForm.Visible = false;// +TO DO: исправить ошибку когда ни одна из форм приложения не является активный(пользователь за время авторизации убрфл фокус с приложения)
-                        Program.mainForm.ShowDialog(Program.authForm);
-                    }
-                    finally
-                    {
-                        Application.Exit();
-                    }
-                }
-                else
-                {
-                    Password.Text = "";
-                }
-            }
-
-            public bool Auth(string login, string pass)
-            {
-                int appID = 4576470;
-                Settings scope = Settings.All; // TO DO: сделать выбор разрешений для программы пользвателем
-
                 try
                 {
-                    Vk.vk.Authorize(appID, login, pass, scope); // TO DO: Сделать возможным сохранения пары логин/пароль
+                    Program.authForm.Visible = false;// +TO DO: исправить ошибку когда ни одна из форм приложения не является активный(пользователь за время авторизации убрфл фокус с приложения)
+                    Program.mainForm.ShowDialog(Program.authForm);
                 }
-                catch (VkNet.Exception.VkApiAuthorizationException e)
+                finally
                 {
-                    //TO DO: Вынести строковую константу из кода, для локализируемости
-                    MessageBox.Show(e.Email +
-                                    "\nВозможно данный логин не существует, либо пароль набран не верно.\nПовторите ввод.");
-                    return false;
-                }
-                catch (VkNet.Exception.VkApiException e)
-                {
-                    MessageBox.Show("Не удалось соединиться с сервером, проверьте интернет-соединение");
-                    return false;
-                }
-                return true; // TO DO: проверка успешности аутентификации
-            }
-
-            private void Authority_KeyPress(object sender, KeyPressEventArgs e)
-            {
-                if (e.KeyChar == 13)
-                {
-                    e.Handled = true;
-                    Authorizing();
-                }
-                else if (e.KeyChar == 27)
-                {
-                    e.Handled = true;
                     Application.Exit();
                 }
             }
+            else
+            {
+                Password.Text = "";
+            }
         }
 
-        public static class Vk
+        public bool Auth(string login, string pass)
         {
-            public static VkApi vk = new VkApi();
+            int appID = 4576470;
+            Settings scope = Settings.All; // TO DO: сделать выбор разрешений для программы пользвателем
+
+            try
+            {
+                Vk.vk.Authorize(appID, login, pass, scope); // TO DO: Сделать возможным сохранения пары логин/пароль
+            }
+            catch (VkNet.Exception.VkApiAuthorizationException e)
+            {
+                //TO DO: Вынести строковую константу из кода, для локализируемости
+                MessageBox.Show(e.Email +
+                                "\nВозможно данный логин не существует, либо пароль набран не верно.\nПовторите ввод.");
+                return false;
+            }
+            catch (VkNet.Exception.VkApiException e)
+            {
+                MessageBox.Show("Не удалось соединиться с сервером, проверьте интернет-соединение");
+                return false;
+            }
+            return true; // TO DO: проверка успешности аутентификации
         }
+
+        private void Authority_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                e.Handled = true;
+                Authorizing();
+            }
+            else if (e.KeyChar == 27)
+            {
+                e.Handled = true;
+                Application.Exit();
+            }
+        }
+    }
+
+    public static class Vk
+    {
+        public static VkApi vk = new VkApi();
+    }
 }

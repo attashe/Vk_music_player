@@ -98,6 +98,7 @@
             this.button1.TabIndex = 4;
             this.button1.Text = "Log out";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -119,6 +120,7 @@
             this.button3.TabIndex = 7;
             this.button3.Text = "Pause";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -206,10 +208,13 @@
             // trackBar1
             // 
             this.trackBar1.Location = new System.Drawing.Point(4, 92);
+            this.trackBar1.Maximum = 100;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trackBar1.Size = new System.Drawing.Size(45, 96);
             this.trackBar1.TabIndex = 17;
+            this.trackBar1.Value = 50;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // tabs
             // 
@@ -237,6 +242,7 @@
             this.button6.TabIndex = 20;
             this.button6.Text = "Save tab..";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // trackBar2
             // 
@@ -278,6 +284,7 @@
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
             this.ResumeLayout(false);
